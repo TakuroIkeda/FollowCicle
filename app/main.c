@@ -67,8 +67,8 @@ int main(void)
 
         for (int h = 0; h <= n; h++)
         {
-            user[h].follow_usr = (int *)malloc((n + 1) * sizeof(int));
-            user[h].hozon = (follow_cicle_inf *)malloc((n + 1) * sizeof(follow_cicle_inf));
+            user[h].follow_usr = (int *)malloc((N) * sizeof(int));
+            user[h].hozon = (follow_cicle_inf *)malloc((N) * sizeof(follow_cicle_inf));
         }
 
         for (int h = 0; h <= n; h++)

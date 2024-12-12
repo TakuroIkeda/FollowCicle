@@ -1,6 +1,8 @@
 #ifndef DEFINE_H
 #define DEFINE_H
 
+#define N 100
+
 typedef struct
 {
     int a;
