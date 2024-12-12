@@ -39,7 +39,6 @@ int main(void)
 
     for (int x = 1; x <= 100; x++)
     {
-
         char filename[256];
         // ファイルを開く
         // ファイル名を動的に生成
@@ -94,7 +93,10 @@ int main(void)
             // int a, b;
             sscanf(data, "%d %d", &a, &b); // 数値を抽出
             // printf("a = %d, b = %d\n", a, b);
-            user[a].follow_usr[b] = 1;
+            if (a != b)
+            {
+                user[a].follow_usr[b] = 1;
+            }
         }
 
         // ファイルを閉じる
@@ -117,14 +119,50 @@ int main(void)
                                 // user[i].user_cicle_flag++;
                                 // user[j].user_cicle_flag++;
                                 user[h].hozon[user[h].user_cicle_flag].a = h;
-                                user[i].hozon[user[i].user_cicle_flag].a = h;
-                                user[j].hozon[user[j].user_cicle_flag].a = h;
+                                // user[i].hozon[user[i].user_cicle_flag].a = h;
+                                // user[j].hozon[user[j].user_cicle_flag].a = h;
                                 user[h].hozon[user[h].user_cicle_flag].b = i;
-                                user[i].hozon[user[i].user_cicle_flag].b = i;
-                                user[j].hozon[user[j].user_cicle_flag].b = i;
+                                // user[i].hozon[user[i].user_cicle_flag].b = i;
+                                // user[j].hozon[user[j].user_cicle_flag].b = i;
                                 user[h].hozon[user[h].user_cicle_flag].c = j;
-                                user[i].hozon[user[i].user_cicle_flag].c = j;
-                                user[j].hozon[user[j].user_cicle_flag].c = j;
+                                // user[i].hozon[user[i].user_cicle_flag].c = j;
+                                // user[j].hozon[user[j].user_cicle_flag].c = j;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        // if (x == 32 && h == 3)
+        // {
+        //     int s;
+        //     printf("stop\n");
+        // }
+
+        for (int h = 1; h <= n; h++)
+        {
+            for (int i = 1; i < N; i++)
+            {
+                sortUserValues(&user[h].hozon[i]);
+            }
+        }
+
+        for (int h = 1; h <= n; h++)
+        {
+            for (int i = 1; i < N; i++)
+            {
+                if (user[h].hozon[i].a > 0 && user[h].hozon[i].b > 0 && user[h].hozon[i].c > 0)
+                {
+                    for (int j = 1; j < N; j++)
+                    {
+                        if (i != j)
+                        {
+                            if (user[h].hozon[i].a == user[h].hozon[j].a && user[h].hozon[i].b == user[h].hozon[j].b && user[h].hozon[i].c == user[h].hozon[j].c)
+                            {
+                                user[h].user_cicle_flag--;
+                                user[h].hozon[j].a = 0;
+                                user[h].hozon[j].b = 0;
+                                user[h].hozon[j].c = 0;
                             }
                         }
                     }
@@ -134,21 +172,13 @@ int main(void)
 
         for (int h = 1; h <= n; h++)
         {
-            for (int i = 1; i <= n; i++)
-            {
-                sortUserValues(&user[h].hozon[i]);
-            }
-        }
-
-        for (int h = 1; h <= n; h++)
-        {
-            for (int i = 1; i <= n; i++)
+            for (int i = 1; i < N; i++)
             {
                 if (user[h].hozon[i].a > 0 && user[h].hozon[i].b > 0 && user[h].hozon[i].c > 0)
                 {
                     for (int j = 1; j <= n; j++)
                     {
-                        for (int k = 1; k <= n; k++)
+                        for (int k = 1; k < N; k++)
                         {
                             if (user[h].hozon[i].a == user[j].hozon[k].a && user[h].hozon[i].b == user[j].hozon[k].b && user[h].hozon[i].c == user[j].hozon[k].c && h != j)
                             {
@@ -179,7 +209,10 @@ int main(void)
             }
         }
 
-        printf("%d\n", counter);
+        if (counter != 0)
+        {
+            printf("%d回目 = %d\n", x, counter);
+        }
 
         for (int h = 0; h <= n; h++)
         {
