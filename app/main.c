@@ -4,31 +4,6 @@
 #include "define.h"
 #include "simulate.h"
 
-// void sortUserValues(follow_cicle_inf *user)
-// {
-//     // 一時的な配列に値を格納
-//     int temp[3] = {user->a, user->b, user->c};
-
-//     // 選択ソートを使用して整列（簡単なソート例）
-//     for (int i = 0; i < 2; i++)
-//     {
-//         for (int j = i + 1; j < 3; j++)
-//         {
-//             if (temp[i] > temp[j])
-//             {
-//                 int tmp = temp[i];
-//                 temp[i] = temp[j];
-//                 temp[j] = tmp;
-//             }
-//         }
-//     }
-
-//     // 整列された値を元の変数に戻す
-//     user->a = temp[0];
-//     user->b = temp[1];
-//     user->c = temp[2];
-// }
-
 int main(void)
 {
 
@@ -90,7 +65,6 @@ int main(void)
         // 残りの行を読み取る
         while (fgets(data, sizeof(data), file) != NULL)
         {
-            // int a, b;
             sscanf(data, "%d %d", &a, &b); // 数値を抽出
             // printf("a = %d, b = %d\n", a, b);
             if (a != b)
@@ -116,28 +90,15 @@ int main(void)
                             if (user[j].follow_usr[h] == 1)
                             {
                                 user[h].user_cicle_flag++;
-                                // user[i].user_cicle_flag++;
-                                // user[j].user_cicle_flag++;
                                 user[h].hozon[user[h].user_cicle_flag].a = h;
-                                // user[i].hozon[user[i].user_cicle_flag].a = h;
-                                // user[j].hozon[user[j].user_cicle_flag].a = h;
                                 user[h].hozon[user[h].user_cicle_flag].b = i;
-                                // user[i].hozon[user[i].user_cicle_flag].b = i;
-                                // user[j].hozon[user[j].user_cicle_flag].b = i;
                                 user[h].hozon[user[h].user_cicle_flag].c = j;
-                                // user[i].hozon[user[i].user_cicle_flag].c = j;
-                                // user[j].hozon[user[j].user_cicle_flag].c = j;
                             }
                         }
                     }
                 }
             }
         }
-        // if (x == 32 && h == 3)
-        // {
-        //     int s;
-        //     printf("stop\n");
-        // }
 
         for (int h = 1; h <= n; h++)
         {
@@ -192,14 +153,6 @@ int main(void)
                 }
             }
         }
-
-        // for (int h = 1; h <= n; h++)
-        // {
-        //     if (user[h].user_cicle_flag == 1 && h == user[h].a)
-        //     {
-        //         counter++;
-        //     }
-        // }
 
         for (int h = 1; h <= n; h++)
         {
